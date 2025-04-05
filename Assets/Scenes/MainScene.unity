@@ -1138,7 +1138,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1543565341}
         m_TargetAssemblyTypeName: GridSpawner, Assembly-CSharp
         m_MethodName: SpawnMoreRows
         m_Mode: 1
