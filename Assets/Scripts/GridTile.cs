@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GridTile : MonoBehaviour
 {
-    private SpriteRenderer sr;
+    private SpriteRenderer spriteRenderer;
 
     public Color defaultColor = Color.white;
     public Color highlightColor = Color.yellow;
@@ -10,25 +10,25 @@ public class GridTile : MonoBehaviour
 
     void Awake()
     {
-        sr = GetComponent<SpriteRenderer>();
-        sr.color = defaultColor;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.color = defaultColor;
     }
 
     void OnMouseEnter()
     {
-        sr.color = highlightColor;
+        spriteRenderer.color = highlightColor;
     }
 
     void OnMouseExit()
     {
-        sr.color = defaultColor;
+        spriteRenderer.color = defaultColor;
     }
 
     void OnMouseDown()
     {
         if (IsOnSurface())
         {
-            GridSystem.tileMap.Remove(gridPos);
+            GridSpawner.tileMap.Remove(gridPos);
             Destroy(gameObject);
         }
     }
@@ -46,7 +46,7 @@ public class GridTile : MonoBehaviour
         foreach (Vector2Int dir in directions)
         {
             Vector2Int neighbor = gridPos + dir;
-            if (!GridSystem.tileMap.ContainsKey(neighbor))
+            if (!GridSpawner.tileMap.ContainsKey(neighbor))
             {
                 return true;
             }
