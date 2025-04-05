@@ -52,7 +52,7 @@ public class CameraController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (ignoreUI || !IsPointerOverUIObject() && !IsPointerOverDraggable())
+            if (ignoreUI || !IsPointerOverUIObject())
             {
                 isTouching = true;
                 lastPosition = (Vector2)Input.mousePosition;
@@ -132,25 +132,6 @@ public class CameraController : MonoBehaviour
 
             cam.transform.position = new Vector3(camX, camY, cam.transform.position.z);
         }
-    }
-
-    bool IsPointerOverDraggable()
-    {
-        Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(mouseWorld, Vector2.zero);
-
-        if (hit.collider != null)
-        {
-            // You can filter by tag or component
-            if (hit.collider.GetComponent<DraggablePiece>() != null)
-                return true;
-
-            // OR if you're clicking on a block:
-            if (hit.collider.GetComponent<BlockCollider>() != null)
-                return true;
-        }
-
-        return false;
     }
 }
 
