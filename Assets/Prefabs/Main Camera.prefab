@@ -152,10 +152,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseScrollSpeed: 0.1
   minZoom: 1.5
-  maxZoom: 5
+  maxZoom: 20
   ignoreUI: 0
   useBounds: 1
-  boundMinX: -8
-  boundMaxX: 8
-  boundMinY: -5
-  boundMaxY: 4
+  boundMinX: -80
+  boundMaxX: 80
+  boundMinY: -50
+  boundMaxY: 40

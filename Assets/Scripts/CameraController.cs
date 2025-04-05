@@ -16,10 +16,10 @@ public class CameraController : MonoBehaviour
 
     public bool useBounds;
 
-    public float boundMinX = -150;
-    public float boundMaxX = 150;
-    public float boundMinY = -150;
-    public float boundMaxY = 150;
+    public float boundMinX = -1500;
+    public float boundMaxX = 1500;
+    public float boundMinY = -1500;
+    public float boundMaxY = 1500;
 
     private bool canUseMouse;
     private Camera cam;
@@ -36,7 +36,7 @@ public class CameraController : MonoBehaviour
     {
         if (canUseMouse)
         {
-            UpdateWithMouse();
+            //UpdateWithMouse();
         }
         else
         {
@@ -79,7 +79,7 @@ public class CameraController : MonoBehaviour
 
         if (Input.mouseScrollDelta.y != 0)
         {
-            ZoomCamera(Input.mouseScrollDelta.y);
+            ZoomCamera(-Input.mouseScrollDelta.y);
         }
     }
 

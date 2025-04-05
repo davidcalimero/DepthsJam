@@ -5,34 +5,41 @@ public class GridSpawner : MonoBehaviour
 {
     public GameObject gridTilePrefab;
     public int columns;
+    public int rows;
     public float initialY;
-    public float bottomGap;
 
     public static Dictionary<Vector2Int, GameObject> tileMap = new Dictionary<Vector2Int, GameObject>();
 
-    private float lastGridBottomY;
+    public float lastGridBottomY;
+    private float tileSize;
 
     private void Awake()
     {
+        tileSize = GetTileSize();
         lastGridBottomY = initialY;
     }
 
-    public void UpdateGrid()
+    private void Start()
     {
-        Camera cam = Camera.main;
+        SpawnRowsFrom(lastGridBottomY);
+    }
 
-        float screenHeight = 2f * cam.orthographicSize;
-        float screenWidth = screenHeight * cam.aspect;
+    public float GetTileSize()
+    {
+        return gridTilePrefab.GetComponent<SpriteRenderer>().bounds.size.y;
+    }
 
-        float tileSize = screenWidth / columns;
 
-        float startY = lastGridBottomY - tileSize;
+   public void SpawnMoreRows()
+    {
+        float newStartY = lastGridBottomY - tileSize;
+        SpawnRowsFrom(newStartY);
+    }
 
-        float bottomY = cam.transform.position.y - cam.orthographicSize;
-        float usableHeight = startY - bottomY - bottomGap;
-        int rows = Mathf.FloorToInt(usableHeight / tileSize);
-
-        float startX = -screenWidth / 2f + tileSize / 2f;
+    private void SpawnRowsFrom(float startY)
+    {
+        float totalWidth = columns * tileSize;
+        float startX = -totalWidth / 2f + tileSize / 2f;
 
         for (int row = 0; row < rows; row++)
         {
@@ -46,21 +53,8 @@ public class GridSpawner : MonoBehaviour
 
                 Vector2 spawnPos = new Vector2(xPos, yPos);
                 GameObject tile = Instantiate(gridTilePrefab, spawnPos, Quaternion.identity, transform);
-
-                SpriteRenderer sr = tile.GetComponent<SpriteRenderer>();
-                if (sr != null)
-                {
-                    Vector2 spriteSize = sr.bounds.size;
-                    float scaleX = tileSize / spriteSize.x;
-                    float scaleY = tileSize / spriteSize.y;
-                    tile.transform.localScale = new Vector3(scaleX, scaleY, 1f);
-                }
-
-                GridTile gridTile = tile.GetComponent<GridTile>();
-                if (gridTile != null)
-                {
-                    gridTile.gridPos = new Vector2Int(xGrid, yGrid);
-                }
+                tile.GetComponent<Tile>().gridPos = new Vector2Int(xGrid, yGrid);
+                tile.GetComponent<Tile>().worldPos = tile.transform.position;
 
                 tileMap[new Vector2Int(xGrid, yGrid)] = tile;
             }
