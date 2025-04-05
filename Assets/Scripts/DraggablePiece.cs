@@ -49,24 +49,26 @@ public class DraggablePiece : MonoBehaviour
         transform.position = new Vector3(targetPos.x, targetPos.y, transform.position.z);
     }
 
-    void OnMouseDown() => isDragging = true;
+    void OnMouseDown()
+    {
+        isDragging = true;
+        foreach (var block in blockColliders)
+        {
+            block.RemoveFromGrid();
+        }
+    }
 
     void OnMouseUp()
     {
         if (!isDragging) return;
         isDragging = false;
 
-        sprite.color = placedColor;
+        if (sprite.color == validColor)
+        {
+            PlaceInGrid();
+        }
 
-        //if (isSnapping && CanPlaceAt(targetGridOrigin))
-        //{
-        //    PlaceAt(targetGridOrigin);
-        //    sprite.color = placedColor;
-        //}
-        //else
-        //{
-        //    //Destroy(gameObject);
-        //}
+        sprite.color = placedColor;
     }
 
     void UpdatePreviewColor(bool valid)
@@ -120,5 +122,13 @@ public class DraggablePiece : MonoBehaviour
         float centerY = (minY + maxY) / 2f;
 
         return new Vector2(centerX, centerY);
+    }
+
+    void PlaceInGrid()
+    {
+        foreach (var block in blockColliders)
+        {
+            block.PlaceInGrid();
+        }
     }
 }

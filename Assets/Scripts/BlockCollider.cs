@@ -13,8 +13,12 @@ public class BlockCollider : MonoBehaviour
     {
         if (other.CompareTag("GridCell"))
         {
-            ++cellsColliding;
-            currentTile = other.GetComponent<Tile>();
+            Tile tile = other.GetComponent<Tile>();
+            if(!tile.filled)
+            {
+                ++cellsColliding;
+                currentTile = tile;
+            }
         }
             
     }
@@ -22,6 +26,32 @@ public class BlockCollider : MonoBehaviour
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("GridCell"))
-            --cellsColliding;
+        {
+            Tile tile = other.GetComponent<Tile>();
+            if (!tile.filled)
+            {
+                --cellsColliding;
+                if (cellsColliding <= 0)
+                {
+                    currentTile = null;
+                }
+            }
+        }
+    }
+
+    public void PlaceInGrid()
+    {
+        if (currentTile != null)
+        {
+            currentTile.filled = true;
+        }
+    }
+
+    public void RemoveFromGrid()
+    {
+        if(currentTile != null)
+        {
+            currentTile.filled = false;
+        }
     }
 }
