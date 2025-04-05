@@ -2,7 +2,6 @@
 
 public class DraggablePiece : MonoBehaviour
 {
-    public PieceShape shape;
     public float snapSpeed = 15f;
     public float maxSnapDistance = 1.5f;
 
