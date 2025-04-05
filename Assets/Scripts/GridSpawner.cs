@@ -1,16 +1,23 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class GridSystem : MonoBehaviour
+public class GridSpawner : MonoBehaviour
 {
     public GameObject gridTilePrefab;
     public int columns;
-    public float startY;
+    public float initialY;
     public float bottomGap;
 
     public static Dictionary<Vector2Int, GameObject> tileMap = new Dictionary<Vector2Int, GameObject>();
 
-    void Start()
+    private float lastGridBottomY;
+
+    private void Awake()
+    {
+        lastGridBottomY = initialY;
+    }
+
+    public void UpdateGrid()
     {
         Camera cam = Camera.main;
 
@@ -18,6 +25,8 @@ public class GridSystem : MonoBehaviour
         float screenWidth = screenHeight * cam.aspect;
 
         float tileSize = screenWidth / columns;
+
+        float startY = lastGridBottomY - tileSize;
 
         float bottomY = cam.transform.position.y - cam.orthographicSize;
         float usableHeight = startY - bottomY - bottomGap;
@@ -28,7 +37,7 @@ public class GridSystem : MonoBehaviour
         for (int row = 0; row < rows; row++)
         {
             float yPos = startY - row * tileSize;
-            int yGrid = row;
+            int yGrid = Mathf.RoundToInt(yPos / tileSize);
 
             for (int col = 0; col < columns; col++)
             {
@@ -38,7 +47,6 @@ public class GridSystem : MonoBehaviour
                 Vector2 spawnPos = new Vector2(xPos, yPos);
                 GameObject tile = Instantiate(gridTilePrefab, spawnPos, Quaternion.identity, transform);
 
-                // Scale tile
                 SpriteRenderer sr = tile.GetComponent<SpriteRenderer>();
                 if (sr != null)
                 {
@@ -48,7 +56,6 @@ public class GridSystem : MonoBehaviour
                     tile.transform.localScale = new Vector3(scaleX, scaleY, 1f);
                 }
 
-                // Set grid position in tile
                 GridTile gridTile = tile.GetComponent<GridTile>();
                 if (gridTile != null)
                 {
@@ -57,40 +64,8 @@ public class GridSystem : MonoBehaviour
 
                 tileMap[new Vector2Int(xGrid, yGrid)] = tile;
             }
+
+            lastGridBottomY = yPos;
         }
     }
-
-    void Update()
-    {
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //    Vector2 snappedPos = GetSnappedPosition(mouseWorldPos);
-        //    //Instantiate(objectToPlace, snappedPos, Quaternion.identity);
-        //}
-    }
-
-    //Vector2 GetSnappedPosition(Vector2 worldPos)
-    //{
-    //    float x = Mathf.Floor(worldPos.x / gridCellSize.x) * gridCellSize.x;
-    //    float y = Mathf.Floor(worldPos.y / gridCellSize.y) * gridCellSize.y;
-    //    return new Vector2(x, y);
-    //}
-
-    //void OnDrawGizmos()
-    //{
-    //    int width = 20;
-    //    int height = 20;
-    //    Gizmos.color = Color.gray;
-
-    //    for (int x = 0; x <= width; x++)
-    //    {
-    //        Gizmos.DrawLine(new Vector3(x * gridCellSize.x, 0, 0), new Vector3(x * gridCellSize.x, height * gridCellSize.y, 0));
-    //    }
-
-    //    for (int y = 0; y <= height; y++)
-    //    {
-    //        Gizmos.DrawLine(new Vector3(0, y * gridCellSize.y, 0), new Vector3(width * gridCellSize.x, y * gridCellSize.y, 0));
-    //    }
-    //}
 }
