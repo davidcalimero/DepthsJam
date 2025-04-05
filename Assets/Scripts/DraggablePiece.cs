@@ -4,6 +4,7 @@ public class DraggablePiece : MonoBehaviour
 {
     public float snapSpeed = 15f;
     public float maxSnapDistance = 1.5f;
+    public System.Action<bool> onPiecePlaced;
 
     private SpriteRenderer sprite;
     public float snapThreshold = 0.4f;
@@ -47,28 +48,32 @@ public class DraggablePiece : MonoBehaviour
         }
 
         transform.position = new Vector3(targetPos.x, targetPos.y, transform.position.z);
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            isDragging = false;
+
+            if (sprite.color == validColor)
+            {
+                sprite.color = placedColor;
+                PlaceInGrid();
+                onPiecePlaced?.Invoke(true);
+            }
+            else
+            {
+                onPiecePlaced?.Invoke(false);
+                Destroy(gameObject);
+            }
+        }
     }
 
-    void OnMouseDown()
+    public void StartDragging()
     {
         isDragging = true;
         foreach (var block in blockColliders)
         {
             block.RemoveFromGrid();
         }
-    }
-
-    void OnMouseUp()
-    {
-        if (!isDragging) return;
-        isDragging = false;
-
-        if (sprite.color == validColor)
-        {
-            PlaceInGrid();
-        }
-
-        sprite.color = placedColor;
     }
 
     void UpdatePreviewColor(bool valid)
