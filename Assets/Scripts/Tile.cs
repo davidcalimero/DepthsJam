@@ -9,7 +9,7 @@ public class Tile : MonoBehaviour
     {
         get { return _filled; }
         set {
-            GetComponent<SpriteRenderer>().color = value ? Color.yellow : Color.white; //Debug: if seen, there is a bug
+            GetComponent<SpriteRenderer>().color = value ? new Color(0, 0, 0, 0): Color.white; //Debug: if seen, there is a bug
             _filled = value;
         }
     }

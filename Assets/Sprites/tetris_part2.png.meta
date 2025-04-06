@@ -703,6 +703,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: tetris_part2_0
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 609
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16a2c2c4e7e964643841186c201789ac
+      internalID: 338230374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -741,6 +763,7 @@ TextureImporter:
       tetris_part1_7: 442268261030443647
       tetris_part1_8: 4523222784486627534
       tetris_part1_9: 1363876108
+      tetris_part2_0: 338230374
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

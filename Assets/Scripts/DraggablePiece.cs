@@ -137,6 +137,7 @@ public class DraggablePiece : MonoBehaviour
         {
             block.PlaceInGrid();
         }
+        GetComponent<SpriteRenderer>().enabled = false;
     }
 
     bool IsAdjacentToPlacedPiece()

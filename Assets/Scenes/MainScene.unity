@@ -886,9 +886,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  availablePieces: 20
+  availablePieces: 0
   nextDepthButton: {fileID: 1923074271}
-  scoreToIncreaseDepth: 50
+  scoreToIncreaseDepth: 0
   scoreText: {fileID: 480961856}
 --- !u!1 &1606429446
 GameObject:
@@ -966,7 +966,6 @@ MonoBehaviour:
   buildingObjective: {x: 3, y: 6}
   renderCamera: {fileID: 71977285}
   renderTexture: {fileID: 8400000, guid: 88108eca02cfb4ec3853b0b4ed265a9b, type: 2}
-  pieceCountText: {fileID: 944979927}
 --- !u!114 &1606429451
 MonoBehaviour:
   m_ObjectHideFlags: 0

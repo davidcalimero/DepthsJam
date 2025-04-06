@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using TMPro;
 
 public class PieceTrayUI : MonoBehaviour
 {
@@ -13,25 +12,16 @@ public class PieceTrayUI : MonoBehaviour
     public Vector2Int buildingObjective;
     public Camera renderCamera;
     public RenderTexture renderTexture;
-    
-    public TMP_Text pieceCountText;
 
     private GameObject currentPiecePreview;
 
     void Start()
     {
         LoadRandomPiece();
-        UpdatePieceUI();
     }
 
     void LoadRandomPiece()
     {
-        previewImage.enabled = GameManager.Instance.availablePieces > 0;
-        if (!previewImage.enabled)
-        {
-            return;
-        }
-
         GameObject basePrefab = availablePieces[Random.Range(0, availablePieces.Count)];
         currentPiecePreview = Instantiate(basePrefab);
         currentPiecePreview.transform.position = Vector3.zero;
@@ -68,10 +58,7 @@ public class PieceTrayUI : MonoBehaviour
     {
         if (successful)
         {
-            --GameManager.Instance.availablePieces;
-            UpdatePieceUI();
             LoadRandomPiece();
-            
         }
         else
         {
@@ -105,7 +92,7 @@ public class PieceTrayUI : MonoBehaviour
 
             BlockNode node = nodeObj.GetComponent<BlockNode>();
             node.type = randomType;
-            node.GetComponent<SpriteRenderer>().sprite = node.icons[(int)randomType];
+            node.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = node.icons[(int)randomType];
 
             if (isBuilding)
             {
@@ -170,11 +157,5 @@ public class PieceTrayUI : MonoBehaviour
 
         currentPiecePreview.transform.Rotate(0f, 0f, -90f);
         previewImage.transform.Rotate(0f, 0f, -90f);
-    }
-
-    void UpdatePieceUI()
-    {
-        if (pieceCountText != null)
-            pieceCountText.text = $"x{GameManager.Instance.availablePieces}";
     }
 }
