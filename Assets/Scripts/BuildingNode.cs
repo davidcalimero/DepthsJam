@@ -15,6 +15,8 @@ public class BuildingNode : BlockNode
         {
             objectiveReached = true;
             GameManager.Instance.AddPoints(points * currentAmount);
+            ++GameManager.Instance.availablePieces;
+
         }
         text.text = currentAmount + "/" + targetAmount;
     }

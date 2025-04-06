@@ -5,7 +5,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    private int score = 0;
+    public int score = 0;
+    public int availablePieces;
 
     [Header("UI")]
     public TMP_Text scoreText;

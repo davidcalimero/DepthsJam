@@ -13,7 +13,7 @@ public class PieceTrayUI : MonoBehaviour
     public Vector2Int buildingObjective;
     public Camera renderCamera;
     public RenderTexture renderTexture;
-    public int availablePiecesOnDeck;
+    
     public TMP_Text pieceCountText;
 
     private GameObject currentPiecePreview;
@@ -26,8 +26,8 @@ public class PieceTrayUI : MonoBehaviour
 
     void LoadRandomPiece()
     {
-        previewImage.enabled = availablePiecesOnDeck > 0;
-        if (availablePiecesOnDeck <= 0)
+        previewImage.enabled = GameManager.Instance.availablePieces > 0;
+        if (!previewImage.enabled)
         {
             return;
         }
@@ -68,9 +68,10 @@ public class PieceTrayUI : MonoBehaviour
     {
         if (successful)
         {
-            --availablePiecesOnDeck;
+            --GameManager.Instance.availablePieces;
             UpdatePieceUI();
             LoadRandomPiece();
+            
         }
         else
         {
@@ -174,6 +175,6 @@ public class PieceTrayUI : MonoBehaviour
     void UpdatePieceUI()
     {
         if (pieceCountText != null)
-            pieceCountText.text = $"x{availablePiecesOnDeck}";
+            pieceCountText.text = $"x{GameManager.Instance.availablePieces}";
     }
 }

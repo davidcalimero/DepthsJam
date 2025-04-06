@@ -885,6 +885,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d62dbb8d04ff4e548393e73d5274cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
+  availablePieces: 20
   scoreText: {fileID: 480961856}
 --- !u!1 &1606429446
 GameObject:
@@ -962,7 +964,6 @@ MonoBehaviour:
   buildingObjective: {x: 3, y: 6}
   renderCamera: {fileID: 71977285}
   renderTexture: {fileID: 8400000, guid: 88108eca02cfb4ec3853b0b4ed265a9b, type: 2}
-  availablePiecesOnDeck: 1
   pieceCountText: {fileID: 944979927}
 --- !u!114 &1606429451
 MonoBehaviour:
