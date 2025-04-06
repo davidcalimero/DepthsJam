@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public Button nextDepthButton;
     public int scoreToIncreaseDepth;
     public GameObject panel;
+    public GameObject startPanel;
 
     [Header("UI")]
     public TMP_Text scoreText;
@@ -54,5 +55,10 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void StartGame()
+    {
+        startPanel.SetActive(false);
     }
 }
