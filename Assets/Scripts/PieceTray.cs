@@ -28,9 +28,9 @@ public class PieceTrayUI : MonoBehaviour
         AssignRandomNodes(currentPiecePreview);
         SetLayerRecursively(currentPiecePreview, LayerMask.NameToLayer("Water"));
 
-        previewImage.sprite = RenderToSprite();
+        previewImage.transform.rotation = Quaternion.identity;
 
-        currentPiecePreview.SetActive(false);
+        RenderToSprite();
     }
 
     void SetLayerRecursively(GameObject obj, int layer)
@@ -116,8 +116,10 @@ public class PieceTrayUI : MonoBehaviour
         return bounds;
     }
 
-    Sprite RenderToSprite()
+    void RenderToSprite()
     {
+        currentPiecePreview.SetActive(true);
+
         Bounds bounds = GetCombinedBounds(currentPiecePreview);
 
         float boundsAspect = bounds.size.x / bounds.size.y;
@@ -144,6 +146,16 @@ public class PieceTrayUI : MonoBehaviour
         renderCamera.targetTexture = null;
         RenderTexture.active = null;
 
-        return Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
+        previewImage.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
+
+        currentPiecePreview.SetActive(false);
+    }
+
+    public void RotatePreviewPiece()
+    {
+        if (currentPiecePreview == null) return;
+
+        currentPiecePreview.transform.Rotate(0f, 0f, -90f);
+        previewImage.transform.Rotate(0f, 0f, -90f);
     }
 }
