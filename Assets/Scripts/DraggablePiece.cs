@@ -13,11 +13,19 @@ public class DraggablePiece : MonoBehaviour
     private BlockCollider[] blockColliders;
     private SpriteRenderer sprite;
     private bool isDragging;
+    private GridSpawner spawner;
+    private BlockNode[] blockNodes;
 
     void Awake()
     {
         blockColliders = GetComponentsInChildren<BlockCollider>();
         sprite = GetComponent<SpriteRenderer>();
+        spawner = FindFirstObjectByType<GridSpawner>();
+    }
+
+    void Start()
+    {
+        blockNodes = GetComponentsInChildren<BlockNode>(true);
     }
 
     void Update()
@@ -27,7 +35,7 @@ public class DraggablePiece : MonoBehaviour
         Vector2 mousePos = GetMouseWorldPosition();
         Vector2 targetPos = mousePos;
 
-        if (AllBlocksOverGrid())
+        if (AllBlocksOverGrid() && (IsAdjacentToPlacedPiece() || spawner.piecesMap.Count == 0))
         {
             Vector2 snappedPos = GetSnappedPosition();
             float dist = Vector2.Distance(mousePos, snappedPos);
@@ -129,5 +137,25 @@ public class DraggablePiece : MonoBehaviour
         {
             block.PlaceInGrid();
         }
+    }
+
+    bool IsAdjacentToPlacedPiece()
+    {
+        foreach (BlockNode block in blockNodes)
+        {
+            Vector2Int pos = block.gridPosition;
+
+            foreach (Vector2Int dir in GridSpawner.Directions)
+            {
+                Vector2Int neighborPos = pos + dir;
+
+                if (spawner.piecesMap.ContainsKey(neighborPos))
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }

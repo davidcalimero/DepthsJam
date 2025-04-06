@@ -9,6 +9,13 @@ public class BlockCollider : MonoBehaviour
         get { return cellsColliding > 0; }
     }
 
+    private BlockNode blockNode;
+
+    void Start()
+    {
+        blockNode = GetComponentInChildren<BlockNode>();
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("GridCell"))
@@ -18,9 +25,9 @@ public class BlockCollider : MonoBehaviour
             {
                 ++cellsColliding;
                 currentTile = tile;
+                blockNode.gridPosition = currentTile.gridPos;
             }
-        }
-            
+        }  
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -43,9 +50,7 @@ public class BlockCollider : MonoBehaviour
     {
         if (currentTile != null)
         {
-            BlockNode blockNode = GetComponentInChildren<BlockNode>();
             currentTile.filled = true;
-            blockNode.gridPosition = currentTile.gridPos;
             FindFirstObjectByType<GridSpawner>().PlaceBlock(blockNode.gridPosition, blockNode);
         }
     }

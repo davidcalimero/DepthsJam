@@ -9,7 +9,7 @@ public class GridSpawner : MonoBehaviour
     public int rows;
     public float initialY;
 
-    private static readonly Vector2Int[] Directions =
+    public static readonly Vector2Int[] Directions =
     {
         Vector2Int.up,
         Vector2Int.down,
@@ -17,7 +17,9 @@ public class GridSpawner : MonoBehaviour
         Vector2Int.right
     };
 
-    private Dictionary<Vector2Int, BlockNode> piecesMap = new Dictionary<Vector2Int, BlockNode>();
+    private Dictionary<Vector2Int, BlockNode> _piecesMap = new Dictionary<Vector2Int, BlockNode>();
+    public Dictionary<Vector2Int, BlockNode> piecesMap { get { return _piecesMap; } }
+
 
     public float lastGridBottomY;
     private float tileSize;
