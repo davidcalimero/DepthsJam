@@ -162,7 +162,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -1788633809, guid: 7587387cdaf6f514984859be87ea96de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -206,6 +206,7 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7984033671755082502}
   - {fileID: 3594258034919555371}
   - {fileID: 64623482239751366}
   - {fileID: 151196039116240599}
@@ -229,6 +230,16 @@ MonoBehaviour:
   - {fileID: 439055615, guid: c9ab37446998dce4eb40fe0972d6d328, type: 3}
   - {fileID: 1723982868, guid: d22bd680a82ed7b4ba4678d8595f4655, type: 3}
   type: 0
+  colors:
+  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  - {r: 255, g: 0, b: 255, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  - {r: 0, g: 0, b: 1, a: 1}
+  circles:
+  - {fileID: 1904259951, guid: c589080ad6ee5184d8bf7f63cf6c62d4, type: 3}
+  - {fileID: 1907418678, guid: 14f0d00669357204a9c6f0d7e328992d, type: 3}
+  - {fileID: 1424543437, guid: 9bd63b297aef6c44ea7f4b281d042fb6, type: 3}
+  - {fileID: 1399087270, guid: 9e9bb61aeafb429448076e8e4cfb4a6f, type: 3}
   gridPosition: {x: 0, y: 0}
 --- !u!212 &312932411155539010
 SpriteRenderer:
@@ -297,6 +308,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d7a6e0a8ac7243429ed953e0e1070b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7324560287598124617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7984033671755082502}
+  m_Layer: 0
+  m_Name: empty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7984033671755082502
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7324560287598124617}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3693139079429937655}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8182187687779560087
 GameObject:
   m_ObjectHideFlags: 0

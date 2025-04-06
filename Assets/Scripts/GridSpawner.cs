@@ -114,7 +114,8 @@ public class GridSpawner : MonoBehaviour
         connector.transform.localPosition = Vector3.zero;
         connector.GetComponent<ConnectorNode>().direction = DirectionToAngle(direction);
         fromNode.transform.GetChild(2).gameObject.SetActive(true);
-        fromNode.transform.GetChild(0).localScale = Vector3.one;
+        fromNode.transform.GetChild(3).gameObject.SetActive(true);
+        fromNode.transform.GetChild(1).localScale = Vector3.one;
 
     }
 

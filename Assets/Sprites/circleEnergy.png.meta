@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: cec9e5ce92579114c9799d2bae3021a1
+guid: c589080ad6ee5184d8bf7f63cf6c62d4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4796221296280121810
-    second: EnergyConnectorD_0
+      213: -7952998736786816001
+    second: circleEnergy_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -152,7 +152,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: EnergyConnectorD_0
+      name: circleEnergy_0
       rect:
         serializedVersion: 2
         x: 0
@@ -167,8 +167,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c739f4642d4b633498c963a339709d12
-      internalID: -2023892400
+      spriteID: ac14b2d0aa085a74f8321de347f327f8
+      internalID: 1904259951
       vertices: []
       indices: 
       edges: []
@@ -177,7 +177,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 693361288df7ed8468d7ee732aa81cce
+    spriteID: 539aec77fd793dd4f837dd8d4697c048
     internalID: 0
     vertices: []
     indices: 
@@ -187,7 +187,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      EnergyConnectorD_0: -2023892400
+      circleEnergy_0: 1904259951
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

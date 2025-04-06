@@ -9,6 +9,11 @@ public class BuildingNode : BlockNode
 
     private bool objectiveReached = false;
 
+    private void Start()
+    {
+        text.color  = colors[(int)type];
+    }
+
     void OnGUI()
     {
         if(!objectiveReached && currentAmount >= targetAmount)
@@ -18,6 +23,12 @@ public class BuildingNode : BlockNode
             ++GameManager.Instance.availablePieces;
 
         }
-        text.text = currentAmount + "/" + targetAmount;
+        if (text.gameObject.activeSelf && targetAmount <= currentAmount)
+        {
+            text.gameObject.SetActive(false);
+            transform.GetChild(1).gameObject.SetActive(true);
+        }
+        text.text =  (targetAmount - currentAmount).ToString();
+
     }
 }
