@@ -522,6 +522,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7747246686848321931, guid: 8be1a6038f905cd4f8d4d25f9f0c63a8, type: 3}
+      propertyPath: boundMaxY
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747246686848321931, guid: 8be1a6038f905cd4f8d4d25f9f0c63a8, type: 3}
+      propertyPath: cameraExtraMargin
+      value: -2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

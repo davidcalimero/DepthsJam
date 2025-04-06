@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour
 
     public float minZoom = 5;
     public float maxZoom = 10;
+    public float cameraExtraMargin = 5f;
 
     [Header("UI")]
     [Tooltip("Are touch motions listened to if they are over UI elements?")]
@@ -25,10 +26,13 @@ public class CameraController : MonoBehaviour
     private bool isTouching;
     private Vector2 lastPosition;
 
+    private GridSpawner spawner;
+
     void Start()
     {
         cam = Camera.main;
         canUseMouse = Application.platform != RuntimePlatform.Android && Application.platform != RuntimePlatform.IPhonePlayer && Input.mousePresent;
+        spawner = FindFirstObjectByType<GridSpawner>();
     }
 
     void Update()
@@ -78,7 +82,7 @@ public class CameraController : MonoBehaviour
 
         if (Input.mouseScrollDelta.y != 0)
         {
-            ZoomCamera(-Input.mouseScrollDelta.y);
+            //ZoomCamera(-Input.mouseScrollDelta.y);
         }
     }
 
@@ -86,7 +90,9 @@ public class CameraController : MonoBehaviour
     {
         if (cam == null) cam = Camera.main;
 
-        cam.transform.position -= (cam.ScreenToWorldPoint(deltaPosition) - cam.ScreenToWorldPoint(Vector2.zero));
+        Vector3 position = (cam.ScreenToWorldPoint(deltaPosition) - cam.ScreenToWorldPoint(Vector2.zero));
+
+        cam.transform.position -= new Vector3(0, position.y, 0);
 
     }
     void ZoomCamera(float distance)
@@ -114,6 +120,9 @@ public class CameraController : MonoBehaviour
     {
         if (useBounds && cam != null && cam.orthographic)
         {
+            // Get the current lowest block Y + margin
+            float dynamicMinY = spawner.lastGridBottomY - cameraExtraMargin;
+
             cam.orthographicSize = Mathf.Min(cam.orthographicSize, ((boundMaxY - boundMinY) / 2) - 0.001f);
             cam.orthographicSize = Mathf.Min(cam.orthographicSize, (Screen.height * (boundMaxX - boundMinX) / (2 * Screen.width)) - 0.001f);
 
@@ -125,7 +134,7 @@ public class CameraController : MonoBehaviour
             float camMaxX = boundMaxX - marginX;
             float camMaxY = boundMaxY - marginY;
             float camMinX = boundMinX + marginX;
-            float camMinY = boundMinY + marginY;
+            float camMinY = Mathf.Max(boundMinY + marginY, dynamicMinY);
 
             float camX = Mathf.Clamp(cam.transform.position.x, camMinX, camMaxX);
             float camY = Mathf.Clamp(cam.transform.position.y, camMinY, camMaxY);
