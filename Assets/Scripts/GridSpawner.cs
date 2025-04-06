@@ -8,7 +8,6 @@ public class GridSpawner : MonoBehaviour
     public int rows;
     public float initialY;
 
-    public static Dictionary<Vector2Int, GameObject> tileMap = new Dictionary<Vector2Int, GameObject>();
 
     public float lastGridBottomY;
     private float tileSize;
@@ -55,8 +54,6 @@ public class GridSpawner : MonoBehaviour
                 GameObject tile = Instantiate(gridTilePrefab, spawnPos, Quaternion.identity, transform);
                 tile.GetComponent<Tile>().gridPos = new Vector2Int(xGrid, yGrid);
                 tile.GetComponent<Tile>().worldPos = tile.transform.position;
-
-                tileMap[new Vector2Int(xGrid, yGrid)] = tile;
             }
 
             lastGridBottomY = yPos;

@@ -4,16 +4,15 @@ public class DraggablePiece : MonoBehaviour
 {
     public float snapSpeed = 15f;
     public float maxSnapDistance = 1.5f;
-    public System.Action<bool> onPiecePlaced;
-
-    private SpriteRenderer sprite;
     public float snapThreshold = 0.4f;
-    private bool isDragging;
+    public System.Action<bool> onPiecePlaced;
 
     private Color validColor = new Color(0.6f, 1f, 0.6f, 0.8f);
     private Color invalidColor = new Color(1f, 0.4f, 0.4f, 0.8f);
     private Color placedColor = Color.white;
     private BlockCollider[] blockColliders;
+    private SpriteRenderer sprite;
+    private bool isDragging;
 
     void Awake()
     {
@@ -70,10 +69,6 @@ public class DraggablePiece : MonoBehaviour
     public void StartDragging()
     {
         isDragging = true;
-        foreach (var block in blockColliders)
-        {
-            block.RemoveFromGrid();
-        }
     }
 
     void UpdatePreviewColor(bool valid)

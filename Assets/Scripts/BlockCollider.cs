@@ -46,12 +46,4 @@ public class BlockCollider : MonoBehaviour
             currentTile.filled = true;
         }
     }
-
-    public void RemoveFromGrid()
-    {
-        if(currentTile != null)
-        {
-            currentTile.filled = false;
-        }
-    }
 }
