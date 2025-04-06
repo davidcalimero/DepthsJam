@@ -145,6 +145,7 @@ MonoBehaviour:
   text: {fileID: 7093767548165130195}
   targetAmount: 0
   currentAmount: 0
+  points: 5
 --- !u!212 &822324794620738334
 SpriteRenderer:
   m_ObjectHideFlags: 0
