@@ -1,4 +1,14 @@
-﻿public class BuildingNode : BlockNode
+﻿using UnityEngine;
+using TMPro;
+
+public class BuildingNode : BlockNode
 {
-    public int targetAmount;
+    public TextMeshPro text;
+    public int targetAmount = 0;
+    public int currentAmount = 0;
+
+    void OnGUI()
+    {
+        text.text = currentAmount + "/" + targetAmount;
+    }
 }

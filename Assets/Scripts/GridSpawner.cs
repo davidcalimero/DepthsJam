@@ -75,6 +75,7 @@ public class GridSpawner : MonoBehaviour
     {
         piecesMap.Add(gridPos, node);
         UpdateConnectionsForBlock(node);
+        UpdateConnectedGroupFrom(node);
     }
 
     private void UpdateConnectionsForBlock(BlockNode node)
@@ -109,5 +110,53 @@ public class GridSpawner : MonoBehaviour
         connector.GetComponent<ConnectorNode>().type = fromNode.type;
         connector.transform.localPosition = Vector3.zero;
         connector.transform.rotation = Quaternion.Euler(0, 0, DirectionToAngle(direction));
+    }
+
+    private void UpdateConnectedGroupFrom(BlockNode startingNode)
+    {
+        HashSet<Vector2Int> visited = new();
+        Queue<Vector2Int> toVisit = new();
+        List<BuildingNode> buildingsInChain = new();
+
+        visited.Add(startingNode.gridPosition);
+        toVisit.Enqueue(startingNode.gridPosition);
+
+        int count = 0;
+
+        while (toVisit.Count > 0)
+        {
+            Vector2Int pos = toVisit.Dequeue();
+
+            if (!piecesMap.TryGetValue(pos, out BlockNode node)) continue;
+            if (node.type != startingNode.type) continue;
+
+            if (node is BuildingNode building)
+            {
+                buildingsInChain.Add(building);
+            }
+            else
+            {
+                count++;
+            }
+
+            foreach (Vector2Int dir in Directions)
+            {
+                Vector2Int neighborPos = pos + dir;
+                if (visited.Contains(neighborPos)) continue;
+
+                if (piecesMap.TryGetValue(neighborPos, out BlockNode neighbor) &&
+                    neighbor.type == startingNode.type)
+                {
+                    visited.Add(neighborPos);
+                    toVisit.Enqueue(neighborPos);
+                }
+            }
+        }
+
+        // Update all buildings in this group
+        foreach (var building in buildingsInChain)
+        {
+            building.currentAmount = count;
+        }
     }
 }
