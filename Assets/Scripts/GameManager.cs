@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,9 +11,11 @@ public class GameManager : MonoBehaviour
     public int availablePieces;
     public Button nextDepthButton;
     public int scoreToIncreaseDepth;
+    public GameObject panel;
 
     [Header("UI")]
     public TMP_Text scoreText;
+    public TMP_Text endScoreText;
 
     private int lastDepthScore = 0;
 
@@ -30,9 +33,15 @@ public class GameManager : MonoBehaviour
         UpdateUI();
     }
 
+    private void LateUpdate()
+    {
+        panel.SetActive(availablePieces <= 0);
+    }
+
     void UpdateUI()
     {
         scoreText.text = $"Score: {score}";
+        endScoreText.text = $"{score}";
         nextDepthButton.gameObject.SetActive((score - lastDepthScore) >= scoreToIncreaseDepth);
     }
 
@@ -40,5 +49,10 @@ public class GameManager : MonoBehaviour
     {
         lastDepthScore = score;
         UpdateUI();
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
