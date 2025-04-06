@@ -1561,9 +1561,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridTilePrefab: {fileID: 6727391915838141134, guid: 6d800758b6acd4035bd2d3d1437c855b, type: 3}
   connectorPrefab: {fileID: 6446659158812531569, guid: bf7e4c6b2db8d4cc1955de481a577b5b, type: 3}
-  columns: 10
-  rows: 15
+  startPiece: {fileID: 4755155374970044139, guid: f692fd5eb7d494a20b84ed9adf4c83e4, type: 3}
+  columns: 9
+  rows: 12
   initialY: 0.1
+  startPosition: {x: 4, y: 0}
   lastGridBottomY: 0
 --- !u!4 &1543565342
 Transform:
@@ -1701,7 +1703,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32.2
+  m_fontSize: 28.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

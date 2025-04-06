@@ -36,7 +36,7 @@ public class DraggablePiece : MonoBehaviour
         Vector2 mousePos = GetMouseWorldPosition();
         Vector2 targetPos = mousePos;
 
-        if (AllBlocksOverGrid() && (IsAdjacentToPlacedPiece() || spawner.piecesMap.Count == 0))
+        if (AllBlocksOverGrid() && IsAdjacentToPlacedPiece())
         {
             Vector2 snappedPos = GetSnappedPosition();
             float dist = Vector2.Distance(mousePos, snappedPos);
@@ -152,7 +152,7 @@ public class DraggablePiece : MonoBehaviour
             {
                 Vector2Int neighborPos = pos + dir;
 
-                if (spawner.piecesMap.ContainsKey(neighborPos))
+                if (spawner.piecesMap.ContainsKey(neighborPos) || neighborPos == spawner.startPosition)
                 {
                     return true;
                 }

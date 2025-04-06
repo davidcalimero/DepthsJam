@@ -5,9 +5,11 @@ public class GridSpawner : MonoBehaviour
 {
     public GameObject gridTilePrefab;
     public GameObject connectorPrefab;
+    public GameObject startPiece;
     public int columns;
     public int rows;
     public float initialY;
+    public Vector2Int startPosition = new Vector2Int(0, 4);
 
     public static readonly Vector2Int[] Directions =
     {
@@ -68,6 +70,14 @@ public class GridSpawner : MonoBehaviour
                 GameObject tile = Instantiate(gridTilePrefab, spawnPos, Quaternion.identity, transform);
                 tile.GetComponent<Tile>().gridPos = new Vector2Int(xGrid, yGrid);
                 tile.GetComponent<Tile>().worldPos = tile.transform.position;
+
+                if(row == startPosition.y && col == startPosition.x)
+                {
+                    GameObject piece = Instantiate(startPiece, transform);
+                    piece.transform.localScale = new Vector3(0.8f, 0.8f, 1);
+                    piece.transform.position = new Vector3(0, 0.1f, 0);
+                    tile.GetComponent<Tile>().filled = true;
+                }
             }
 
             lastGridBottomY = yPos;
