@@ -76,9 +76,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.43137255}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,8 +101,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  icons:
-  - {fileID: -2122588160, guid: 3145b693cef3b1944954dac51631104f, type: 3}
-  - {fileID: 984141450, guid: 0fa29b36a48619345a3b145d684b53e8, type: 3}
-  - {fileID: -184775493, guid: c1539b692743f3545a78fa4751c3433f, type: 3}
-  - {fileID: 1783416903, guid: 568a91525d483e44e9b63be2b1bff3eb, type: 3}
+  iconsLeft:
+  - {fileID: 570405832, guid: 5532aabd526fa8c4fbdaa503a3b3a6bb, type: 3}
+  - {fileID: 1058684867, guid: a166e8063ed6ac04e95162750331702a, type: 3}
+  - {fileID: 1731920831, guid: 52a8ead06b53ed048b89eedf1fc0a29e, type: 3}
+  - {fileID: -45586600, guid: 677741c3b5437884bb2f653cb961098d, type: 3}
+  iconsRight:
+  - {fileID: -1387823519, guid: b05e18060c6be4947875ea44d6ff851c, type: 3}
+  - {fileID: -855578059, guid: 52dfc5d696eb26f49b1bc78c90c2d01a, type: 3}
+  - {fileID: -877460977, guid: 5a3c7e83e22b4e14eaedd9c0e606aebc, type: 3}
+  - {fileID: 709926634, guid: b0912d17ff479a143a06acbe3b03be40, type: 3}
+  iconsUp:
+  - {fileID: -1683510652, guid: 2a1af70936bca6b49a74f4cef9e3a7c5, type: 3}
+  - {fileID: -664218047, guid: 61852e41ccca80341a4a785b1a397121, type: 3}
+  - {fileID: -1724785317, guid: 2d4462eda3077454e899b90fda594826, type: 3}
+  - {fileID: -425170662, guid: 9d212fec385d13040aa1e616951612ed, type: 3}
+  iconsDown:
+  - {fileID: -2023892400, guid: cec9e5ce92579114c9799d2bae3021a1, type: 3}
+  - {fileID: 425329147, guid: 806983216c2180a45a0940deb8549548, type: 3}
+  - {fileID: 104947460, guid: 7556b7023747ce245adf529512c575bd, type: 3}
+  - {fileID: 1245522750, guid: 8372292ff3e73504dac6d8e83ef2f3cf, type: 3}
+  direction: 0

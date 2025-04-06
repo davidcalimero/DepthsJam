@@ -46,7 +46,6 @@ public class GridSpawner : MonoBehaviour
     {
         float newStartY = lastGridBottomY - tileSize;
         SpawnRowsFrom(newStartY);
-        GameManager.Instance.ResetButton();
     }
 
     private void SpawnRowsFrom(float startY)
@@ -112,8 +111,10 @@ public class GridSpawner : MonoBehaviour
         GameObject connector = Instantiate(connectorPrefab, fromNode.transform);
         connector.GetComponent<ConnectorNode>().type = fromNode.type;
         connector.transform.localPosition = Vector3.zero;
-        connector.transform.rotation = Quaternion.Euler(0, 0, DirectionToAngle(direction));
+        connector.GetComponent<ConnectorNode>().direction = DirectionToAngle(direction);
         fromNode.transform.GetChild(2).gameObject.SetActive(true);
+        fromNode.transform.GetChild(0).localScale = Vector3.one;
+
     }
 
     private void UpdateConnectedGroupFrom(BlockNode startingNode)
