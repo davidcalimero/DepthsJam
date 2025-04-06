@@ -15,6 +15,7 @@ public class DraggablePiece : MonoBehaviour
     private bool isDragging;
     private GridSpawner spawner;
     private BlockNode[] blockNodes;
+    public AudioClip placeSound;
 
     void Awake()
     {
@@ -137,6 +138,7 @@ public class DraggablePiece : MonoBehaviour
         {
             block.PlaceInGrid();
         }
+        PlayPlaceSound();
         GetComponent<SpriteRenderer>().enabled = false;
     }
 
@@ -158,5 +160,10 @@ public class DraggablePiece : MonoBehaviour
         }
 
         return false;
+    }
+
+    void PlayPlaceSound()
+    {
+        GetComponent<AudioSource>().PlayOneShot(placeSound);
     }
 }
