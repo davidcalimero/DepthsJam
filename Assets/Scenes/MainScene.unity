@@ -887,6 +887,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   availablePieces: 20
+  nextDepthButton: {fileID: 1923074271}
+  scoreToIncreaseDepth: 50
   scoreText: {fileID: 480961856}
 --- !u!1 &1606429446
 GameObject:

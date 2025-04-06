@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,14 +8,20 @@ public class GameManager : MonoBehaviour
 
     public int score = 0;
     public int availablePieces;
+    public Button nextDepthButton;
+    public int scoreToIncreaseDepth;
 
     [Header("UI")]
     public TMP_Text scoreText;
+
+    private int lastDepthScore = 0;
 
     void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+
+        UpdateUI();
     }
 
     public void AddPoints(int amount)
@@ -25,7 +32,13 @@ public class GameManager : MonoBehaviour
 
     void UpdateUI()
     {
-        if (scoreText != null)
-            scoreText.text = $"Score: {score}";
+        scoreText.text = $"Score: {score}";
+        nextDepthButton.gameObject.SetActive((score - lastDepthScore) >= scoreToIncreaseDepth);
+    }
+
+    public void ResetButton()
+    {
+        lastDepthScore = score;
+        UpdateUI();
     }
 }

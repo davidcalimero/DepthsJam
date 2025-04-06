@@ -46,6 +46,7 @@ public class GridSpawner : MonoBehaviour
     {
         float newStartY = lastGridBottomY - tileSize;
         SpawnRowsFrom(newStartY);
+        GameManager.Instance.ResetButton();
     }
 
     private void SpawnRowsFrom(float startY)
