@@ -10,6 +10,7 @@ public class GridSpawner : MonoBehaviour
     public int rows;
     public float initialY;
     public Vector2Int startPosition = new Vector2Int(0, 4);
+    private bool startExists = false;
 
     public static readonly Vector2Int[] Directions =
     {
@@ -71,12 +72,13 @@ public class GridSpawner : MonoBehaviour
                 tile.GetComponent<Tile>().gridPos = new Vector2Int(xGrid, yGrid);
                 tile.GetComponent<Tile>().worldPos = tile.transform.position;
 
-                if(row == startPosition.y && col == startPosition.x)
+                if(row == startPosition.y && col == startPosition.x && !startExists)
                 {
                     GameObject piece = Instantiate(startPiece, transform);
                     piece.transform.localScale = new Vector3(0.8f, 0.8f, 1);
                     piece.transform.position = new Vector3(0, 0.1f, 0);
                     tile.GetComponent<Tile>().filled = true;
+                    startExists = true;
                 }
             }
 
