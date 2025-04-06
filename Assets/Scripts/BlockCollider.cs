@@ -43,8 +43,10 @@ public class BlockCollider : MonoBehaviour
     {
         if (currentTile != null)
         {
+            BlockNode blockNode = GetComponentInChildren<BlockNode>();
             currentTile.filled = true;
-            GridSpawner.piecesMap.Add(currentTile.gridPos, GetComponent<BlockNode>());
+            blockNode.gridPosition = currentTile.gridPos;
+            FindFirstObjectByType<GridSpawner>().PlaceBlock(blockNode.gridPosition, blockNode);
         }
     }
 }

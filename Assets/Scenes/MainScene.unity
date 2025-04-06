@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &71977283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,6 +557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridTilePrefab: {fileID: 6727391915838141134, guid: 6d800758b6acd4035bd2d3d1437c855b, type: 3}
+  connectorPrefab: {fileID: 6446659158812531569, guid: bf7e4c6b2db8d4cc1955de481a577b5b, type: 3}
   columns: 20
   rows: 20
   initialY: 0.1

@@ -92,6 +92,7 @@ public class PieceTrayUI : MonoBehaviour
 
             BlockNode node = nodeObj.GetComponent<BlockNode>();
             node.type = randomType;
+            node.GetComponent<SpriteRenderer>().sprite = node.icons[(int)randomType];
 
             if (isBuilding)
             {
