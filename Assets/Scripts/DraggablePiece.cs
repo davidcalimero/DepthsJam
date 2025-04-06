@@ -61,7 +61,6 @@ public class DraggablePiece : MonoBehaviour
             else
             {
                 onPiecePlaced?.Invoke(false);
-                Destroy(gameObject);
             }
         }
     }

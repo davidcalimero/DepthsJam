@@ -8,6 +8,7 @@ public class GridSpawner : MonoBehaviour
     public int rows;
     public float initialY;
 
+    public static Dictionary<Vector2Int, BlockNode> piecesMap = new Dictionary<Vector2Int, BlockNode>();
 
     public float lastGridBottomY;
     private float tileSize;
@@ -16,6 +17,7 @@ public class GridSpawner : MonoBehaviour
     {
         tileSize = GetTileSize();
         lastGridBottomY = initialY;
+        piecesMap.Clear();
     }
 
     private void Start()

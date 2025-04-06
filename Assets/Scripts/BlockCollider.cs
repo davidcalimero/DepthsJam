@@ -44,6 +44,7 @@ public class BlockCollider : MonoBehaviour
         if (currentTile != null)
         {
             currentTile.filled = true;
+            GridSpawner.piecesMap.Add(currentTile.gridPos, GetComponent<BlockNode>());
         }
     }
 }
