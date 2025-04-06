@@ -537,6 +537,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1543565342}
   - component: {fileID: 1543565341}
+  - component: {fileID: 1543565343}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -558,8 +559,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridTilePrefab: {fileID: 6727391915838141134, guid: 6d800758b6acd4035bd2d3d1437c855b, type: 3}
   connectorPrefab: {fileID: 6446659158812531569, guid: bf7e4c6b2db8d4cc1955de481a577b5b, type: 3}
-  columns: 20
-  rows: 20
+  columns: 10
+  rows: 15
   initialY: 0.1
   lastGridBottomY: 0
 --- !u!4 &1543565342
@@ -577,6 +578,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1543565343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543565340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ea0501e766da17479b74cdbf01b3bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundTilePrefab: {fileID: 7308871201771123468, guid: b57b6a40a14f334489fd97e959723127, type: 3}
+  tileHeight: 0
 --- !u!1 &1606429446
 GameObject:
   m_ObjectHideFlags: 0
