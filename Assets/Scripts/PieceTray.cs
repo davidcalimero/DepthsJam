@@ -112,6 +112,7 @@ public class PieceTrayUI : MonoBehaviour
             {
                 BuildingNode bn = (BuildingNode)node;
                 bn.targetAmount = Random.Range(buildingObjective.x, buildingObjective.y + 1);
+                bn.text.text = $"{bn.targetAmount}";
             }
         }
     }
