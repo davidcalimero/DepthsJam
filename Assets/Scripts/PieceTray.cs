@@ -79,6 +79,14 @@ public class PieceTrayUI : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if(!previewImage.enabled && GameManager.Instance.availablePieces > 0) {
+            LoadRandomPiece();
+            UpdatePieceUI();
+        }
+    }
+
     Vector2 GetMouseWorldPosition()
     {
         Vector2 mouse = Input.mousePosition;
